@@ -19,7 +19,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt',         '3.1.13'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -39,6 +39,15 @@ group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+end
+
+group :test do
+  gem 'capybara',                 '3.28.0'
+  gem 'selenium-webdriver',       '3.142.4'
+  gem 'webdrivers',               '4.1.2'
+  gem 'rails-controller-testing', '1.0.4'
+  gem 'minitest',                 '5.11.3'
+  gem 'minitest-reporters',       '1.3.8'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
