@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @questions = @user.questions.paginate(page: params[:page])
   end
   
   def new
@@ -62,10 +63,10 @@ class UsersController < ApplicationController
       end
     end
 
-    # 正しいユーザーかどうか確認
+    # 正しいユーザーかどうかを確認
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless @user == current_user
+      redirect_to(root_url) unless current_user?(@user)
     end
 
     # 管理者かどうか確認
