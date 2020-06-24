@@ -1,0 +1,13 @@
+
+<div class="row">
+  <aside class="col-md-4">
+    <section class="author_info">
+      <h1>
+        <% if @author.image.attached? %>
+          <%= image_tag @author.display_image %>
+        <% end %>
+        <%= @author.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
