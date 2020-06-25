@@ -1,0 +1,8 @@
+<li id="book-<%= book.id %>">
+  <%= image_tag book.image if book.image.attached? %>
+  <span class="author"><%= link_to book.author.name, book.author %></span>
+  <span class="content"><%= book.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(book.created_at) %> ago.
+  </span>
+</li>

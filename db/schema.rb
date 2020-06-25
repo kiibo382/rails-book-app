@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_120639) do
+ActiveRecord::Schema.define(version: 2020_06_24_015332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 2020_06_23_120639) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "author_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id", "created_at"], name: "index_books_on_author_id_and_created_at"
+    t.index ["author_id"], name: "index_books_on_author_id"
+  end
+
   create_table "impressions", force: :cascade do |t|
     t.string "impressionable_type"
     t.integer "impressionable_id"
@@ -83,6 +93,15 @@ ActiveRecord::Schema.define(version: 2020_06_23_120639) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "created_at"], name: "index_questions_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -95,4 +114,6 @@ ActiveRecord::Schema.define(version: 2020_06_23_120639) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "books", "authors"
+  add_foreign_key "questions", "users"
 end
