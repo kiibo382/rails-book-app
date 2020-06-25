@@ -4,15 +4,7 @@
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
-      <section class="question_form">
-        <%= render 'shared/question_form' %>
-      </section>
     </aside>
-    <div class="col-md-8">
-      <h3>Question Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
-  </div>
   </div>
 <% else %>
 
@@ -30,3 +22,4 @@
 </div>
 
 <%= link_to image_tag("green.jpg", alt: "image", width: "200px") %>
+<% end %>
