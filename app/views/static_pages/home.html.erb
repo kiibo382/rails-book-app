@@ -13,13 +13,18 @@
   
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
+
 <div class="container">
-  <h2 class="center"><%= link_to "Authors", authors_path %></h2>
   <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">col-sm-4</div>
+    <% @books.each do |book| %>
+      <li class="all_books col-xs-6 col-md-4 col-lg-3">
+        <% if book.image.attached? %>
+          <%= image_tag book.display_image %>
+        <% end %>
+        <p><%= link_to book.title, book %></p>
+      </li>
+    <% end %>
   </div>
 </div>
 
-<%= link_to image_tag("green.jpg", alt: "image", width: "200px") %>
 <% end %>

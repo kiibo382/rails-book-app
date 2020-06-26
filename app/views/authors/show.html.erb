@@ -1,12 +1,10 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="author_info">
-      <h1>
-        <% if @author.image.attached? %>
-          <%= image_tag @author.display_image %>
-        <% end %>
-        <%= @author.name %>
-      </h1>
+      <% if @author.image.attached? %>
+        <%= image_tag @author.avatar_image, class: "avatar" %>
+      <% end %>
+      <h2><%= @author.name %></h2>
     </section>
   </aside>
   <div class="col-md-8">

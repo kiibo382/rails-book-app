@@ -1,0 +1,13 @@
+<div class="row">
+  <aside class="col-xs-4">
+    <section class="book_info">
+      <% if @book.image.attached? %>
+        <%= image_tag @book.display_image %>
+      <% end %>
+      <p><%= @book.title %><p>
+    </section>
+  </aside>
+  <div class="col-xs-8">
+    <%= @book.content %>
+  </div>
+</div>
