@@ -48,19 +48,21 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 3em;
   letter-spacing: -1px;
-  margin-bottom: 30px;
-  text-align: center;
+  // text-align: center;
   font-weight: normal;
-  color: $gray-light;
+  // color: $gray-light;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 p {
   font-size: 1.1em;
   line-height: 1.7em;
-  margin-top: 3px;
-  margin-bottom: 3px;
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
 }
 
 
@@ -210,7 +212,7 @@ input {
   }
   .content {
     display: block;
-    margin-left: 60px;
+    margin-left: 10px;
     img {
       display: block;
       padding: 5px 0;
@@ -235,4 +237,14 @@ span.image {
   input {
     border: 0;
   }
+}
+
+.releasedate{
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+// user_avatar
+.user_avatar{
+  
 }

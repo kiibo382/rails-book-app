@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.image.attach(params[:user][:image])
     if @user.save
       log_in @user
       flash[:success] = "登録が完了しました！"
@@ -49,7 +50,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
+      params.require(:user).permit(:name, :email, :image, :password,
                                    :password_confirmation)
     end
 

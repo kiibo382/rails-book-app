@@ -1,3 +1,11 @@
+<div class="center jumbotron">
+  <h1>著者と読者を繫げるアプリ～読書コミュニティ～</h1>
+  <% if logged_in? %>
+  <% else %>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
+</div>
+
 <% if logged_in? %>
   <div class="row">
     <aside class="col-md-4">
@@ -6,13 +14,7 @@
       </section>
     </aside>
   </div>
-<% else %>
-
-<div class="center jumbotron">
-  <h1>著者と読者を繫げるアプリ～読書コミュニティ～</h1>
-  
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
+<% end %>
 
 <div class="container">
   <div class="row">
@@ -26,5 +28,3 @@
     <% end %>
   </div>
 </div>
-
-<% end %>

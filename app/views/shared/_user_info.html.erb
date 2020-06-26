@@ -1,3 +1,10 @@
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
-<h1><%= current_user.name %></h1>
+<% if current_user.image.attached? %>
+  <%= image_tag current_user.avatar_image, class: "user_avatar" %>
+<% else %>
+  <%= gravatar_for current_user %>
+<% end %>
+<h2><%= current_user.name %></h2>
 <span><%= link_to "view my profile", current_user %></span>
+<br>
+<br>
+<br>

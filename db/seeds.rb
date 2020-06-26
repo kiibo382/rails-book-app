@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # メインのサンプルユーザーを1人作成する
-User.create!(name:  "Example User",
+User.create!(name:  "はる　はる",
              email: "example@rails.org",
              password:              "foobar",
              password_confirmation: "foobar",

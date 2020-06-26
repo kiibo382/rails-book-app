@@ -1,8 +1,8 @@
 <li id="book-<%= book.id %>">
   <%= image_tag book.image if book.image.attached? %>
-  <span class="author"><%= link_to book.author.name, book.author %></span>
+  <p class="author"><%= link_to book.author.name, book.author %></p>
   <span class="content"><%= book.content %></span>
   <span class="releasedate">
-    Posted <%= time_ago_in_words(book.created_at) %> ago.
+    <%= time_ago_in_words(book.releasedate) %>前に出版されました。
   </span>
 </li>
