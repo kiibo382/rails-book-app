@@ -1,6 +1,6 @@
 <li id="book-<%= book.id %>">
   <%= image_tag book.display_image if book.image.attached? %>
-  <p class="author"><%= link_to book.author.name, book.author %></p>
+  <p><%= link_to book.title, book %></p>
   <span class="content"><%= book.content %></span>
   <span class="releasedate">
     <p>This is released <%= time_ago_in_words(book.releasedate) %> ago.</p>

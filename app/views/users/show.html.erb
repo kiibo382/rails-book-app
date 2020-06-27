@@ -1,21 +1,29 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col-sm-4">
     <section class="user_info">
-      <h1>
+      <h2>
         <% if @user.image.attached? %>
           <%= image_tag @user.avatar_image, class: "user_avatar" %>
         <% else %>
           <%= gravatar_for @user %>
         <% end %>
         <%= @user.name %>
-      </h1>
+      </h2>
+      <h3>いいねしている本</h3>
+      <% @user.liked_books.each do |book| %>
+        <p><%= link_to book.title, book %></p>
+      <% end %>
     </section>
   </aside>
-  <% @authors.each do |author| %>
-    <li class="follow_author col-md-8">
-      <%= image_tag author.avatar_image, class: "avatar" %>
-      <p><%= link_to author.name, author %></p>
-    </li>
-  <% end %>
+
+  <div class="col-sm-8">
+    <h3>フォロー済み著者</h3>
+    <% @authors.each do |author| %>
+      <li class="follow_author">
+        <%= image_tag author.avatar_image, class: "avatar" %>
+        <p><%= link_to author.name, author %></p>
+      </li>
+    <% end %>
+  </div>
 </div>
