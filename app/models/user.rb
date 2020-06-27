@@ -2,6 +2,8 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   has_many :follows, dependent: :destroy
   has_many :following_authors, through: :follows, source: :author
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :book
   has_one_attached :image
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
@@ -54,5 +56,9 @@ class User < ApplicationRecord
 
   def avatar_image
     image.variant(resize_to_limit: [80, 80])
+  end
+
+  def already_liked?(book)
+    self.likes.exists?(book_id: book.id)
   end
 end
