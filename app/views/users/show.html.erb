@@ -12,4 +12,10 @@
       </h1>
     </section>
   </aside>
+  <% @authors.each do |author| %>
+    <li class="follow_author col-md-8">
+      <%= image_tag author.avatar_image, class: "avatar" %>
+      <p><%= link_to author.name, author %></p>
+    </li>
+  <% end %>
 </div>

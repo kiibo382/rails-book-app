@@ -4,6 +4,7 @@ class Book < ApplicationRecord
   default_scope -> { order(releasedate: :desc) }
   validates :author_id, presence: true
   validates :content, presence: true, length: { maximum: 1000 }
+  validates :releasedate, presence: true
   
   def display_image
     image.variant(resize_to_limit: [210, 297])
