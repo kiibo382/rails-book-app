@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :following_authors, through: :follows, source: :author
   has_many :likes, dependent: :destroy
   has_many :liked_books, through: :likes, source: :book
+  has_many :comments
   has_one_attached :image
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }

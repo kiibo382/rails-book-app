@@ -6,18 +6,71 @@
       <% end %>
       <p><%= @book.title %><p>
       <h3>いいね件数: <%= @book.likes.count %></h3>
-      <% if current_user.already_liked?(@book) %>
-        <%= button_to 'いいねを取り消す', book_like_path(@book), method: :delete %>
-      <% else %>
-        <%= button_to 'いいね', book_likes_path(@book) %>
-      <% end %>
-      <h3>いいねしたユーザー</h3>
-      <% @book.liked_users.each do |user| %>
-        <li><%= user.name %></li>
+      <% if logged_in? %>
+        <% if current_user.already_liked?(@book) %>
+          <%= button_to 'いいねを取り消す', book_like_path(@book), method: :delete %>
+        <% else %>
+          <%= button_to 'いいね', book_likes_path(@book) %>
+        <% end %>
+        <h3>いいねしたユーザー</h3>
+        <% @book.liked_users.each do |user| %>
+          <li><%= user.name %></li>
+        <% end %>
       <% end %>
     </section>
   </aside>
+  
   <div class="col-xs-8">
     <%= @book.content %>
+    <h3>コメント一覧</h3>
+    <% @comments.each do |c| %>
+      <% if c.parent_id.present? || c.id.blank? %>
+        <% next %>
+      <% end %>
+      <div>
+        <% unless c.user.blank? %>
+          <% if c.user.image.attached? %>
+            <%= image_tag c.user.avatar_image, class: "rounded-circle icon_image mr-3 mb-3" %>
+          <% else %>
+            <%= gravatar_for c.user, class: "rounded-circle icon_image mr-3 mb-3" %>
+          <% end %>
+          <%= link_to c.user.name, c.user unless c.user.blank? %>
+          <%= c.content %>
+          <h3>返信一覧</h3>
+          <div id="reply_area">
+            <% c.replies.order(:created_at).each do |reply| %>
+            <p><%= c.user.name %> : <%=reply.content%></p>
+            <% end %>
+          </div>
+          <% if logged_in? %>
+            <%= form_with(model:[@book,@comment_reply]) do |form| %>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <p><label>このコメントに返信する</label></p>
+                  <textarea class="form-control input-form" name="comment[content]" rows="2"><%=@comment_reply.content%></textarea>
+                </div>
+              </div>
+                <%= form.hidden_field :book_id, value: @book.id %>
+                <%= form.hidden_field :parent_id, value: c.id%>
+              <div class="actions">
+                <%= form.submit %>
+              </div>
+            <% end %>
+          <% end %>         
+          <br>
+        <% end %>
+      </div>
+      <br>
+    <% end %>
+    
+    
+    <% if logged_in? %>
+      <%= form_with(model: [@book, @comment], local: true) do |f| %>
+        <%= f.text_area :content, class: "form-control", rows: 5 %>
+        <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+          <i class="far fa-comments"></i> コメントする
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_115556) do
+ActiveRecord::Schema.define(version: 2020_06_28_063845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,18 @@ ActiveRecord::Schema.define(version: 2020_06_27_115556) do
     t.date "releasedate"
     t.index ["author_id", "created_at"], name: "index_books_on_author_id_and_created_at"
     t.index ["author_id"], name: "index_books_on_author_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "parent_id"
+    t.index ["book_id"], name: "index_comments_on_book_id"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -144,6 +156,9 @@ ActiveRecord::Schema.define(version: 2020_06_27_115556) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "books", "authors"
+  add_foreign_key "comments", "books"
+  add_foreign_key "comments", "comments", column: "parent_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "follows", "authors"
   add_foreign_key "follows", "users"
   add_foreign_key "likes", "books"
