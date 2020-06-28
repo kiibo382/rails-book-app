@@ -25,5 +25,9 @@
         <p><%= link_to author.name, author %></p>
       </li>
     <% end %>
+    <h3>コメント一覧</h3>
+    <% @comments.each do |comment| %>
+      <li class="user-comment"><%= link_to comment.content, comment.book %></li>
+    <% end %>
   </div>
 </div>

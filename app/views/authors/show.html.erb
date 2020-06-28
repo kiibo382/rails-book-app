@@ -5,6 +5,8 @@
         <%= image_tag @author.avatar_image, class: "avatar" %>
       <% end %>
       <h2><%= @author.name %></h2>
+      フォロワー数<br>
+      <%= @author.follows.count %><br>
       <% if logged_in? %>
         <% if @author.follow_user(current_user.id) %>
           <%= link_to author_follow_path(author_id: @author.id, id: @author.follow_user(current_user.id).id), class: "btn btn-lg btn-primary", method: :delete do %>

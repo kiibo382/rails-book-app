@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @authors = @user.following_authors
+    @comments = Comment.where(user_id: params[:id])
   end
   
   def new
