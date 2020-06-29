@@ -1,9 +1,12 @@
-<div class="center jumbotron">
-  <h1>著者と読者を繫げるアプリ～読書コミュニティ～</h1>
-  <% if logged_in? %>
-  <% else %>
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-  <% end %>
+<div class="jumbotron jumbotron-extend">
+  <div class="container-fluid">
+    <h1>著者と読者を繫げるコミュニティ</h1>
+    <% if logged_in? %>
+    <h1>~BookLiike~</h1>
+    <% else %>
+      <%= link_to "BookLikeを始めよう！", signup_path, class: "btn btn-lg btn-success margin" %>
+    <% end %>
+  </div>
 </div>
 
 <% if logged_in? %>
@@ -19,7 +22,7 @@
 <div class="container">
   <div class="row">
     <% @books.each do |book| %>
-      <li class="all_books col-xs-6 col-md-4 col-lg-3">
+      <li class="all_books col-xs-4 col-md-3 col-lg-2.4">
         <% if book.image.attached? %>
           <%= image_tag book.display_image %>
         <% end %>

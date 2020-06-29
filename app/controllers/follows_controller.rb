@@ -10,7 +10,6 @@ class FollowsController < ApplicationController
 
     def destroy
         follow = Follow.find_by(user_id: current_user.id, author_id: params[:author_id])
-        binding.pry
         if follow.destroy  
             redirect_back(fallback_location: root_path)
         else

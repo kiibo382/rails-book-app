@@ -4,16 +4,15 @@
       <% if @author.image.attached? %>
         <%= image_tag @author.avatar_image, class: "avatar" %>
       <% end %>
-      <h2><%= @author.name %></h2>
-      フォロワー数<br>
-      <%= @author.follows.count %><br>
+      <h4><%= @author.name %></h4>
+      フォロワー数 : <%= @author.follows.count %><br>
       <% if logged_in? %>
         <% if @author.follow_user(current_user.id) %>
-          <%= link_to author_follow_path(author_id: @author.id, id: @author.follow_user(current_user.id).id), class: "btn btn-lg btn-primary", method: :delete do %>
+          <%= link_to author_follow_path(author_id: @author.id, id: @author.follow_user(current_user.id).id), class: "btn btn-success btn-xs", method: :delete do %>
             フォロー解除
           <% end %>
         <% else %>
-          <%= link_to author_follows_path(@author.id), class: "btn btn-lg btn-primary", method: :post do %>
+          <%= link_to author_follows_path(@author.id), class: "btn btn-success btn-xs", method: :post do %>
             フォロー
           <% end %>
         <% end %>

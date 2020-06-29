@@ -9,6 +9,6 @@ class Author < ApplicationRecord
   end
   
   def avatar_image
-    image.variant(resize_to_limit: [250, 250])
+    image.variant(resize_to_limit: [200, 200])
   end
 end

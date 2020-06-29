@@ -10,7 +10,7 @@
         <% end %>
         <%= @user.name %>
       </h2>
-      <h3>いいねしている本</h3>
+      <h3>いいね</h3>
       <% @user.liked_books.each do |book| %>
         <p><%= link_to book.title, book %></p>
       <% end %>

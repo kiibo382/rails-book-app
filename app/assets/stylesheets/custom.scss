@@ -14,7 +14,7 @@ $gray-medium-light: #eaeaea;
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 2px;
 }
 
 section {
@@ -30,6 +30,28 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.border-top{
+  border-top: solid thin;
+  padding-top: 10px;
+}
+
+.border-top-thick{
+  border-top: solid medium;
+  padding-top: 10px;
+}
+
+.margin{
+  margin: 10px;
+}
+
+.margin-right{
+  margin-right: 10px;
+}
+
+.float-right{
+  float: right;
 }
 
 /* typography */
@@ -59,6 +81,11 @@ h2 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+h4{
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -66,22 +93,31 @@ p {
   margin-bottom: 7.5px;
 }
 
-
 /* header */
 
 #logo {
   float: left;
+  margin-right: 30px;
+  width: 88px;
+}
+
+#title {
   margin-right: 10px;
-  letter-spacing: -1px;
-  width: 80px;
-  height: 60px;
+  font-size: 30px;
+  color: rgba(102, 101, 105, 0.959);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-top: 20px;
+  font-weight: normal;
   &:hover {
-    color: white;
+    color: rgb(8, 8, 8);
     text-decoration: none;
   }
 }
 
+
 header{
+  background-image: image-url("white.png");
   #bs-navi{
     float: right;
     margin-right: auto;
@@ -90,6 +126,11 @@ header{
     float: right;
     margin-right: 10px;
   }
+}
+
+.navbar-extend{
+  padding: 0em;
+  min-height: 80px;
 }
 
 /* footer */
@@ -116,6 +157,16 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+
+// home
+.jumbotron-extend {
+  position: relative;
+  height: 80vh;
+  min-height: 300px;
+  background-image: image-url("back2.jpeg");
+  background-size: cover;
 }
 
 /* miscellaneous */
@@ -182,10 +233,6 @@ input {
   }
 }
 
-// add 
-.jumbotron{
-  background-image: image-url("back2.jpeg");
-}
 
 // authors
 .authors {
@@ -248,8 +295,3 @@ span.image {
   margin-top: 18px;
   margin-bottom: 10px;
 }
-
-// user_avatar
-// .user_avatar{
-
-// }

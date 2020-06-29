@@ -5,14 +5,14 @@
         <%= image_tag @book.display_image %>
       <% end %>
       <p><%= @book.title %><p>
-      <h3>いいね件数: <%= @book.likes.count %></h3>
+      <h4 class="border-top">いいね件数: <%= @book.likes.count %></h4>
       <% if logged_in? %>
         <% if current_user.already_liked?(@book) %>
-          <%= button_to 'いいねを取り消す', book_like_path(@book), method: :delete %>
+          <%= button_to 'いいねを取り消す', book_like_path(@book), { method: :delete, class: "btn btn-success float-right mt-1" } %>
         <% else %>
-          <%= button_to 'いいね', book_likes_path(@book) %>
+          <%= button_to 'いいね', book_likes_path(@book), class: "btn btn-success btn-xs" %>
         <% end %>
-        <h3>いいねしたユーザー</h3>
+        <h4 class="border-top">いいね済ユーザー</h4>
         <% @book.liked_users.each do |user| %>
           <li><%= user.name %></li>
         <% end %>
@@ -21,31 +21,32 @@
   </aside>
   
   <div class="col-xs-8">
+    <h4>内容</h4>
     <%= @book.content %>
-    <h3>コメント一覧</h3>
+    <h4 class="border-top">コメント一覧</h4>
     <% @comments.each do |c| %>
       <% if c.parent_id.present? || c.id.blank? %>
         <% next %>
       <% end %>
-      <div>
+      <div class="border-top-thick">
         <% unless c.user.blank? %>
           <% if c.user.image.attached? %>
-            <%= image_tag c.user.avatar_image, class: "rounded-circle icon_image mr-3 mb-3" %>
+            <%= image_tag c.user.avatar_image, class: "img-circle" %>
           <% else %>
-            <%= gravatar_for c.user, class: "rounded-circle icon_image mr-3 mb-3" %>
+            <%= gravatar_for c.user, class: "img-circle" %>
           <% end %>
           <%= link_to c.user.name, c.user unless c.user.blank? %>
           <%= c.content %>
-          <h3>返信一覧</h3>
-          <div id="reply_area">
+          <h4 class="border-top">返信一覧</h4>
+          <table class="table table-hover">
             <% c.replies.order(:created_at).each do |reply| %>
-            <p><%= c.user.name %> : <%=reply.content%></p>
+              <tr><td><%= c.user.name %> : <%=reply.content%></td></tr>
             <% end %>
-          </div>
+          </table>
           <% if logged_in? %>
             <%= form_with(model:[@book,@comment_reply]) do |form| %>
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 border-top">
                   <p><label>このコメントに返信する</label></p>
                   <textarea class="form-control input-form" name="comment[content]" rows="2"><%=@comment_reply.content%></textarea>
                 </div>
@@ -53,7 +54,7 @@
                 <%= form.hidden_field :book_id, value: @book.id %>
                 <%= form.hidden_field :parent_id, value: c.id%>
               <div class="actions">
-                <%= form.submit %>
+                <%= form.submit "返信する", class: "btn btn-success btn-sm" %>
               </div>
             <% end %>
           <% end %>         
@@ -68,7 +69,7 @@
       <%= form_with(model: [@book, @comment], local: true) do |f| %>
         <%= f.text_area :content, class: "form-control", rows: 5 %>
         <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
-          <i class="far fa-comments"></i> コメントする
+          <i class="far fa-comments">コメントする</i> 
         <% end %>
       <% end %>
     <% end %>
