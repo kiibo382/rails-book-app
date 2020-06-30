@@ -17,9 +17,9 @@ body {
   padding-top: 2px;
 }
 
-section {
-  overflow: auto;
-}
+// section {
+//   overflow: auto;
+// }
 
 textarea {
   resize: vertical;
@@ -27,6 +27,7 @@ textarea {
 
 .center {
   text-align: center;
+  vertical-align: middle;
   h1 {
     margin-bottom: 10px;
   }
@@ -42,6 +43,11 @@ textarea {
   padding-top: 10px;
 }
 
+.border-bottom{
+  border-bottom: solid thin;
+  padding-bottom: 10px;
+}
+
 .margin{
   margin: 10px;
 }
@@ -54,10 +60,53 @@ textarea {
   float: right;
 }
 
+.float-left{
+  float: left;
+}
+
+.float-clear{
+  clear: both;
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.btn-green {
+  width: 100px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10%;
+  background-color: rgb(115, 221, 131);
+  color: rgb(32, 28, 28);
+  font-style: italic;
+  font-family: 'Avenir', serif;
+  &:hover {
+    background-color: rgb(8, 245, 130);
+    color: #000;
+  }
+
+  .btn-green-wide {
+  width: 140px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10%;
+  background-color: rgb(115, 221, 131);
+  color: rgb(32, 28, 28);
+  font-style: italic;
+  font-family: 'Avenir', serif;
+  &:hover {
+    background-color: rgb(8, 245, 130);
+    color: #000;
+  }
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  font-style: italic;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 h1 {
@@ -65,25 +114,14 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
-  font-style: italic;
-  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 h2 {
   font-size: 3em;
   letter-spacing: -1px;
-  // text-align: center;
   font-weight: normal;
-  // color: $gray-light;
   margin-top: 7.5px;
   margin-bottom: 7.5px;
-  font-style: italic;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-h4{
-  font-style: italic;
-  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 p {
@@ -91,6 +129,18 @@ p {
   line-height: 1.7em;
   margin-top: 7.5px;
   margin-bottom: 7.5px;
+  color: black;
+}
+
+a{
+  color: rgb(86, 86, 86);
+  &:hover {
+    color: rgb(8, 8, 8);
+  }
+}
+
+li{
+  list-style: none;
 }
 
 /* header */
@@ -98,17 +148,20 @@ p {
 #logo {
   float: left;
   margin-right: 30px;
-  width: 88px;
+  width: 64px;
+  height: 48px;
 }
 
 #title {
   margin-right: 10px;
-  font-size: 30px;
+  font-size: 35px;
   color: rgba(102, 101, 105, 0.959);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  padding-top: 20px;
+  padding-top: 40px;
   font-weight: normal;
+  font-style: italic;
+  font-family: 'Avenir', serif;
   &:hover {
     color: rgb(8, 8, 8);
     text-decoration: none;
@@ -138,8 +191,8 @@ header{
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
+  border-top: 1px solid rgb(111, 111, 111);
+  color: black;
   a {
     color: $gray;
     &:hover {
@@ -167,6 +220,18 @@ footer {
   min-height: 300px;
   background-image: image-url("back2.jpeg");
   background-size: cover;
+}
+
+.btn-black {
+  border-radius: 0;
+  background-color: #000;
+  color: #fff;
+  font-style: italic;
+  font-family: 'Avenir', serif;
+  &:hover {
+    background-color: #fff;
+    color: #000;
+  }
 }
 
 /* miscellaneous */
@@ -221,7 +286,7 @@ input {
   margin-left: 0;
 }
 
-/* Users index */
+/* user */
 
 .users {
   list-style: none;
@@ -233,6 +298,9 @@ input {
   }
 }
 
+.user-comment{
+  text-indent: 1em;
+}
 
 // authors
 .authors {
@@ -251,7 +319,7 @@ input {
 
 /* books */
 
-.books {
+.book {
   list-style: none;
   padding: 0;
   li {
@@ -264,6 +332,7 @@ input {
   }
   .content {
     display: block;
+    overflow: visible;
     margin-left: 10px;
     img {
       display: block;
@@ -291,7 +360,7 @@ span.image {
   }
 }
 
-.releasedate{
+.releasedate {
   margin-top: 18px;
   margin-bottom: 10px;
 }

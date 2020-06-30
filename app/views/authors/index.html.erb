@@ -5,7 +5,7 @@
     <% @authors.each do |author| %>
       <li class="col-xs-4 col-md-3 col-lg-2.4">
         <%= image_tag author.avatar_image, class: "avatar" %>
-        <p><%= link_to author.name, author %></p>
+        <p><%= link_to author.name, author, class:"underline" %></p>
       </li>
     <% end %>
   </div>

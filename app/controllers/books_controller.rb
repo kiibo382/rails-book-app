@@ -8,6 +8,10 @@ class BooksController < ApplicationController
     @comment_reply = @book.comments.build #コメントに対する返信用の変数
   end
 
+  def index
+    @books = Book.paginate(page: params[:page])
+  end
+
   def destroy
     @book = Book.find(params[:id])
     @comment = @book.comments.find(params[:id])

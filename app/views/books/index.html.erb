@@ -1,0 +1,19 @@
+<% provide(:title, 'All Books') %>
+<h1>All Books</h1>
+
+<%= will_paginate %>
+
+<div class="container ">
+  <div class="row">
+    <% @books.each do |book| %>
+      <li class="col-xs-4 col-md-3 col-lg-2.4">
+        <% if book.image.attached? %>
+          <%= image_tag book.display_image %>
+        <% end %>
+        <p><%= link_to book.title, book, class:"underline" %></p>
+      </li>
+    <% end %>
+  </div>
+</div>
+
+<%= will_paginate %>

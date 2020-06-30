@@ -1,10 +1,10 @@
 <div class="jumbotron jumbotron-extend">
   <div class="container-fluid">
     <h1>著者と読者を繫げるコミュニティ</h1>
-    <% if logged_in? %>
     <h1>~BookLiike~</h1>
+    <% if logged_in? %>
     <% else %>
-      <%= link_to "BookLikeを始めよう！", signup_path, class: "btn btn-lg btn-success margin" %>
+      <%= link_to "Start BookLike", signup_path, class: "btn btn-lg btn-black margin" %>
     <% end %>
   </div>
 </div>
@@ -19,14 +19,15 @@
   </div>
 <% end %>
 
-<div class="container">
+<h2 class="center margin border-top underline"><%= link_to "Books", books_path %></h2>
+<div class="container bordr-top">
   <div class="row">
     <% @books.each do |book| %>
       <li class="all_books col-xs-4 col-md-3 col-lg-2.4">
         <% if book.image.attached? %>
           <%= image_tag book.display_image %>
         <% end %>
-        <p><%= link_to book.title, book %></p>
+        <p><%= link_to book.title, book, class:"underline" %></p>
       </li>
     <% end %>
   </div>

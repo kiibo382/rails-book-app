@@ -1,7 +1,7 @@
 <li id="book-<%= book.id %>">
   <%= image_tag book.display_image, class: "margin-right" if book.image.attached? %>
   <%= book.content %>
-  <p><%= link_to book.title, book %></p>
+  <p><%= link_to book.title, book, class: "underline" %></p>
   <span class="releasedate">
     <p>This is released <%= time_ago_in_words(book.releasedate) %> ago.</p>
   </span>
