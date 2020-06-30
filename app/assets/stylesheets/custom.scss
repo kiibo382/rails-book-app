@@ -17,10 +17,6 @@ body {
   padding-top: 2px;
 }
 
-// section {
-//   overflow: auto;
-// }
-
 textarea {
   resize: vertical;
 }
@@ -85,8 +81,9 @@ textarea {
     background-color: rgb(8, 245, 130);
     color: #000;
   }
-
-  .btn-green-wide {
+}
+ 
+.btn-green-wide {
   width: 140px;
   text-align: center;
   vertical-align: middle;
@@ -130,6 +127,7 @@ p {
   margin-top: 7.5px;
   margin-bottom: 7.5px;
   color: black;
+  word-break: break-all;
 }
 
 a{
@@ -332,7 +330,7 @@ input {
   }
   .content {
     display: block;
-    overflow: visible;
+    word-break: break-all;
     margin-left: 10px;
     img {
       display: block;
@@ -360,7 +358,14 @@ span.image {
   }
 }
 
-.releasedate {
-  margin-top: 18px;
-  margin-bottom: 10px;
+.books{
+  .content {
+    display: block;
+    word-break: break-all;
+    margin-left: 10px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
 }

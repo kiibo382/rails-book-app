@@ -37,7 +37,7 @@
             <%= gravatar_for c.user, class: "img-circle" %>
           <% end %>
           <%= link_to c.user.name, c.user unless c.user.blank? %>
-          <%= c.content %>
+          <p><%= c.content %></p>
           <h4 class="border-top">返信一覧</h4>
           <table class="table table-hover">
             <% c.replies.order(:created_at).each do |reply| %>
