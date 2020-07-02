@@ -5,7 +5,7 @@
 <%= form_tag(books_path, :method => "get") do %>  
   <p>  
     <%= text_field_tag :search, params[:search] %>  
-    <%= submit_tag "検索", :name => nil, class:"btn btn-search" %>  
+    <%= submit_tag "検索", :title => nil, class:"btn btn-search" %>  
   </p>  
 <% end %>  
 
