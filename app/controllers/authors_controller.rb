@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
 
   def index
-    @authors = Author.paginate(page: params[:page])
+    @authors = Author.paginate(page: params[:page]).search(params[:search]) 
   end
 
   def show

@@ -1,19 +1,29 @@
 <% provide(:title, 'All Books') %>
 <h1>All Books</h1>
 
-<%= will_paginate %>
+<h4>Book search</h4>  
+<%= form_tag(books_path, :method => "get") do %>  
+  <p>  
+    <%= text_field_tag :search, params[:search] %>  
+    <%= submit_tag "検索", :name => nil, class:"btn btn-search" %>  
+  </p>  
+<% end %>  
 
-<div class="container ">
-  <div class="row">
-    <% @books.each do |book| %>
-      <li class="col-xs-4 col-md-3 col-lg-2.4">
-        <% if book.image.attached? %>
-          <%= image_tag book.display_image %>
-        <% end %>
-        <p><%= link_to book.title, book, class:"underline" %></p>
-      </li>
-    <% end %>
+<br>
+<br>
+
+<% if @books %>
+  <div class="container ">
+    <div class="row">
+      <% @books.each do |book| %>
+        <li class="col-xs-4 col-md-3 col-lg-2.4">
+          <% if book.image.attached? %>
+            <%= image_tag book.display_image %>
+          <% end %>
+          <p><%= link_to book.title, book, class:"underline" %></p>
+        </li>
+      <% end %>
+    </div>
   </div>
-</div>
-
-<%= will_paginate %>
+  <%= will_paginate @books, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>  
+<% end %>  

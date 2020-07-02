@@ -49,8 +49,6 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  # 試作feedの定義
-  # 完全な実装は次章の「ユーザーをフォローする」を参照
   def feed
     Question.where("user_id = ?", id)
   end
@@ -62,4 +60,12 @@ class User < ApplicationRecord
   def already_liked?(book)
     self.likes.exists?(book_id: book.id)
   end
+
+  def self.search(search)   
+    if search  
+      where(['name LIKE ?', "%#{search}%"])   
+    else  
+      all  
+    end  
+  end  
 end

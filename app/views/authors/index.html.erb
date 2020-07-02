@@ -1,12 +1,27 @@
 <% provide(:title, 'All authors') %>
 <h1>All authors</h1>
-<div class="container authors">
-  <div class="row">
-    <% @authors.each do |author| %>
-      <li class="col-xs-4 col-md-3 col-lg-2.4">
-        <%= image_tag author.avatar_image, class: "avatar" %>
-        <p><%= link_to author.name, author, class:"underline" %></p>
-      </li>
-    <% end %>
+
+<h4>Author search</h4>  
+<%= form_tag(authors_path, :method => "get") do %>  
+  <p>  
+    <%= text_field_tag :search, params[:search] %>  
+    <%= submit_tag "検索", :name => nil, class:"btn btn-search" %>  
+  </p>  
+<% end %>  
+
+<br>
+<br>
+
+<% if @authors %>
+  <div class="container authors">
+    <div class="row">
+      <% @authors.each do |author| %>
+        <li class="col-xs-4 col-md-3 col-lg-2.4">
+          <%= image_tag author.avatar_image, class: "avatar" %>
+          <p><%= link_to author.name, author, class:"underline" %></p>
+        </li>
+      <% end %>
+    </div>
   </div>
-</div>
+  <%= will_paginate @search_users, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>  
+<% end %>

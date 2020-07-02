@@ -16,4 +16,12 @@ class Book < ApplicationRecord
   def avatar_image
     image.variant(resize_to_limit: [250, 250])
   end
+
+  def self.search(search)   
+    if search  
+      where(['name LIKE ?', "%#{search}%"])   
+    else  
+      all  
+    end  
+  end   
 end

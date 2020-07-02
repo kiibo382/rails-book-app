@@ -68,6 +68,22 @@ textarea {
   text-decoration: underline;
 }
 
+.btn-search {
+  width: 100px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10%;
+  background-color: rgb(221, 175, 115);
+  color: rgb(255, 255, 255);
+  font-style: italic;
+  font-family: 'Avenir', serif;
+  float: right;
+  &:hover {
+    background-color: rgb(245, 123, 8);
+    color: rgb(255, 255, 255);
+  }
+}
+ 
 .btn-green {
   width: 100px;
   text-align: center;
@@ -215,7 +231,7 @@ footer {
 .jumbotron-extend {
   position: relative;
   height: 80vh;
-  min-height: 300px;
+  min-height: 200px;
   background-image: image-url("back2.jpeg");
   background-size: cover;
 }
