@@ -1,12 +1,17 @@
-<li>
-  <% if user.image.attached? %>
-    <%= image_tag user.avatar_image, class: "user_avatar" %>
-  <% else %>
-    <%= gravatar_for user %>
-  <% end %>
-  <%= link_to user.name, user, class:"underline" %>
-  <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
-</li>
+ <li class="media">  
+  <div class="media-left">  
+      <% if user.image.attached? %>
+          <%= image_tag user.avatar_image, class: "user_avatar" %>
+      <% else %>
+          <%= gravatar_for user %>
+      <% end %>  
+  </div>  
+  <div class="media-body">  
+    <%= user.name %> 
+    <p><%= link_to 'View profile', user, class:"underline" %></p>  
+    <% if current_user.admin? && !current_user?(user) %>
+      | <%= link_to "delete", user, method: :delete,
+                                    data: { confirm: "You sure?" } %>
+    <% end %>  
+  </div>  
+</li>  
