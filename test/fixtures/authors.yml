@@ -4,8 +4,19 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-# one: {}
-# column: value
-#
-# two: {}
-# column: value
+michael:
+  name: Michael Example
+
+archer:
+  name: Sterling Archer
+
+lana:
+  name: Lana Kane
+
+malory:
+  name: Malory Archer
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  name:  <%= "User #{n}" %>
+<% end %>
