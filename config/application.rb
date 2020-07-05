@@ -36,6 +36,7 @@ module App
 
     # Don't generate system test files.
     # config.generators.system_tests = nil
+    config.i18n.fallbacks = true
         
     config.generators do |g|
       g.test_framework :test_unit
