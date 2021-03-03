@@ -1,8 +1,11 @@
-環境構築　docker
+# 読者と著者を繫げるアプリケーション。
 
-使用言語　ruby
 
-フレームワーク　rails
+## 環境構築手順
+```
+docker-compose build
+docker-compose up -d
+```
 
 データベース postgresql 本番ではaws s3を使用
 
@@ -16,8 +19,3 @@
   ・管理者ページ
   ・いいね機能
   ・お気に入り登録
-
-その他自分の技術
-　Linux
-  python 
-  django
